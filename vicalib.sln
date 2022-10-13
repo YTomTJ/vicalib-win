@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vicalib", "vicalib.vcxproj", "{C3DD97AA-17C8-3557-9FF1-CA0FE3AF46E8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hal", "hal\hal.vcxproj", "{D65C67DC-73A5-4B8A-AC77-CA5F485630F9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hal", "HAL\hal.vcxproj", "{D65C67DC-73A5-4B8A-AC77-CA5F485630F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

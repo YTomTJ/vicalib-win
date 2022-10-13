@@ -23,12 +23,12 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <CharacterSet>Unicode</CharacterSet>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
@@ -56,34 +56,81 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/include;$(SolutionDir)/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/hal;$(SolutionDir)/hal/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
-      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalOptions>/std:c++11 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <Link>
-      <AdditionalOptions>/force:multiple /ignore:4099 %(AdditionalOptions)</AdditionalOptions>
-    </Link>
+    <Link />
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/include;$(SolutionDir)/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/hal;$(SolutionDir)/hal/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
-      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/std:c++11 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
-    <Link>
-      <AdditionalOptions>/force:multiple %(AdditionalOptions)</AdditionalOptions>
-    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera\Drivers\OpenCV\OpenCVDriver.cpp" />
     <ClCompile Include="Camera\Drivers\OpenCV\OpenCVFactory.cpp" />
+    <ClCompile Include="Devices\DeviceRegistry.cpp">
+      <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">EnableFastChecks</BasicRuntimeChecks>
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Disabled</Optimization>
+      <RuntimeTypeInfo Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</RuntimeTypeInfo>
+    </ClCompile>
+    <ClCompile Include="Devices\DeviceTime.cpp" />
+    <ClCompile Include="extra\dlfcn.c" />
+    <ClCompile Include="extra\getopt.c" />
+    <ClCompile Include="extra\sys\time.cpp" />
+    <ClCompile Include="Protobuf\Camera.pb.cc" />
+    <ClCompile Include="Protobuf\CameraModel.pb.cc" />
+    <ClCompile Include="Protobuf\Car.pb.cc" />
+    <ClCompile Include="Protobuf\Command.pb.cc" />
+    <ClCompile Include="Protobuf\Gamepad.pb.cc" />
+    <ClCompile Include="Protobuf\Header.pb.cc" />
+    <ClCompile Include="Protobuf\Image.pb.cc" />
+    <ClCompile Include="Protobuf\Imu.pb.cc" />
+    <ClCompile Include="Protobuf\Lidar.pb.cc" />
+    <ClCompile Include="Protobuf\Matrix.pb.cc" />
+    <ClCompile Include="Protobuf\Messages.pb.cc" />
+    <ClCompile Include="Protobuf\NodeCamMessage.pb.cc" />
+    <ClCompile Include="Protobuf\Pose.pb.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.pb.h" />
+    <ClInclude Include="CameraModel.pb.h" />
     <ClInclude Include="Camera\AutoExposureInterface.h" />
     <ClInclude Include="Camera\CameraDevice.h" />
     <ClInclude Include="Camera\CameraDriverInterface.h" />
     <ClInclude Include="Camera\Drivers\OpenCV\OpenCVDriver.h" />
+    <ClInclude Include="Car.pb.h" />
+    <ClInclude Include="Command.pb.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="Devices\DeviceException.h" />
+    <ClInclude Include="Devices\DeviceFactory.h" />
+    <ClInclude Include="Devices\DeviceRegistry.h" />
+    <ClInclude Include="Devices\DeviceTime.h" />
+    <ClInclude Include="Devices\DriverInterface.h" />
+    <ClInclude Include="Devices\SharedLoad.h" />
+    <ClInclude Include="extra\dirent.h" />
+    <ClInclude Include="extra\dlfcn.h" />
+    <ClInclude Include="extra\getopt.h" />
+    <ClInclude Include="extra\sched.h" />
+    <ClInclude Include="extra\semaphore.h" />
+    <ClInclude Include="extra\sys\time.h" />
+    <ClInclude Include="extra\unistd.h" />
+    <ClInclude Include="Gamepad.pb.h" />
+    <ClInclude Include="Header.pb.h" />
+    <ClInclude Include="Image.pb.h" />
+    <ClInclude Include="Imu.pb.h" />
+    <ClInclude Include="Lidar.pb.h" />
+    <ClInclude Include="Matrix.pb.h" />
+    <ClInclude Include="Messages.pb.h" />
+    <ClInclude Include="NodeCamMessage.pb.h" />
+    <ClInclude Include="Pose.pb.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ThirdParty\ThirdPartyConfig.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

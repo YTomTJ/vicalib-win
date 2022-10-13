@@ -4,19 +4,5 @@
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\vicalib-engine.cc" />
     <ClCompile Include="src\vicalib-task.cc" />
-    <ClCompile Include="extra\sys\time.cpp">
-      <Filter>extra</Filter>
-    </ClCompile>
-    <ClCompile Include="extra\getopt.c">
-      <Filter>extra</Filter>
-    </ClCompile>
-    <ClCompile Include="extra\dlfcn.c">
-      <Filter>extra</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="extra">
-      <UniqueIdentifier>{403fe9df-70a5-4f3a-b5dc-ad138db4b426}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>
