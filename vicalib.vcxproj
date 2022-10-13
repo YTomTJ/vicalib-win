@@ -82,6 +82,11 @@
     <ClCompile Include="src\vicalib-engine.cc" />
     <ClCompile Include="src\vicalib-task.cc" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="hal\hal.vcxproj">
+      <Project>{d65c67dc-73a5-4b8a-ac77-ca5f485630f9}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
