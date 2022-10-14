@@ -4,5 +4,6 @@
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\vicalib-engine.cc" />
     <ClCompile Include="src\vicalib-task.cc" />
+    <ClCompile Include="HAL\Camera\Drivers\OpenCV\OpenCVFactory.cpp" />
   </ItemGroup>
 </Project>

@@ -12,15 +12,14 @@ namespace hal
 struct StaticInitForceLoad{
     StaticInitForceLoad(const char* libpath) {
         // TODO: check this path always works out.
-        void* handle = dlopen(libpath, RTLD_NOW);
-        if(!handle) {
+        void *handle = dlopen(libpath, RTLD_NOW);
+        if (!handle) {
             std::cerr << "Unable to dlopen '" << libpath << "'" << std::endl;
         }
     }
 };
 
-#ifndef __APPLE__
-// Trigger load of all symbols via this static variable
+#if !defined(__APPLE__) && !defined(WIN32)
 static StaticInitForceLoad g_StaticInitForceLoadHAL("libhal.so");
 #endif
 

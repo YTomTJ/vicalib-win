@@ -59,10 +59,10 @@
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PreprocessorDefinitions>HAL_BUILT_AS_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalOptions>/force:multiple /ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -70,13 +70,14 @@
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
-      <PreprocessorDefinitions>HAL_BUILT_AS_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalOptions>/force:multiple %(AdditionalOptions)</AdditionalOptions>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HAL\Camera\Drivers\OpenCV\OpenCVFactory.cpp" />
     <ClCompile Include="src\main.cc" />
     <ClCompile Include="src\vicalib-engine.cc" />
     <ClCompile Include="src\vicalib-task.cc" />

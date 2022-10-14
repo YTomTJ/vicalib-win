@@ -59,7 +59,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/hal;$(SolutionDir)/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PreprocessorDefinitions>HAL_BUILT_AS_STATIC;LIBPROTOBUF_EXPORT;HAL_PROTOBUF_API=__declspec(dllexport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAL_BUILT_AS_STATIC;LIBPROTOBUF_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
   </ItemDefinitionGroup>
@@ -67,12 +67,11 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/hal;$(SolutionDir)/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
-      <PreprocessorDefinitions>HAL_BUILT_AS_STATIC;LIBPROTOBUF_EXPORT;HAL_PROTOBUF_API=__declspec(dllexport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAL_BUILT_AS_STATIC;LIBPROTOBUF_EXPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera\Drivers\OpenCV\OpenCVDriver.cpp" />
-    <ClCompile Include="Camera\Drivers\OpenCV\OpenCVFactory.cpp" />
     <ClCompile Include="Devices\DeviceRegistry.cpp">
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">EnableFastChecks</BasicRuntimeChecks>
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Disabled</Optimization>
