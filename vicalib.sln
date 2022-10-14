@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vicalib", "vicalib.vcxproj"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hal", "HAL\hal.vcxproj", "{D65C67DC-73A5-4B8A-AC77-CA5F485630F9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "protobuf", "HAL\protobuf.vcxproj", "{611BEC70-312C-4AC8-8453-49B23217FDBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{D65C67DC-73A5-4B8A-AC77-CA5F485630F9}.Debug|x64.Build.0 = Debug|x64
 		{D65C67DC-73A5-4B8A-AC77-CA5F485630F9}.Release|x64.ActiveCfg = Release|x64
 		{D65C67DC-73A5-4B8A-AC77-CA5F485630F9}.Release|x64.Build.0 = Release|x64
+		{611BEC70-312C-4AC8-8453-49B23217FDBE}.Debug|x64.ActiveCfg = Debug|x64
+		{611BEC70-312C-4AC8-8453-49B23217FDBE}.Debug|x64.Build.0 = Debug|x64
+		{611BEC70-312C-4AC8-8453-49B23217FDBE}.Release|x64.ActiveCfg = Release|x64
+		{611BEC70-312C-4AC8-8453-49B23217FDBE}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,6 @@
 // Copyright (c) George Washington University, all rights reserved.  See the
 // accompanying LICENSE file for more information.
+#include <HAL/config.h>
 #define HAVE_STRUCT_TIMESPEC
 #include <time.h>
 #include <thread>

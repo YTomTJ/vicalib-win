@@ -59,7 +59,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/hal;$(SolutionDir)/hal/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalOptions>/std:c++11 %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>HAL_EXPORTS;LIBPROTOBUF_EXPORT;HAL_PROTOBUF_API=__declspec(dllexport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link />
   </ItemDefinitionGroup>
@@ -67,7 +67,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)/include;$(SolutionDir)/hal;$(SolutionDir)/hal/extra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
-      <AdditionalOptions>/std:c++11 %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>HAL_EXPORTS;LIBPROTOBUF_EXPORT;HAL_PROTOBUF_API=__declspec(dllexport);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -82,30 +82,15 @@
     <ClCompile Include="extra\dlfcn.c" />
     <ClCompile Include="extra\getopt.c" />
     <ClCompile Include="extra\sys\time.cpp" />
-    <ClCompile Include="Protobuf\Camera.pb.cc" />
-    <ClCompile Include="Protobuf\CameraModel.pb.cc" />
-    <ClCompile Include="Protobuf\Car.pb.cc" />
-    <ClCompile Include="Protobuf\Command.pb.cc" />
-    <ClCompile Include="Protobuf\Gamepad.pb.cc" />
-    <ClCompile Include="Protobuf\Header.pb.cc" />
-    <ClCompile Include="Protobuf\Image.pb.cc" />
-    <ClCompile Include="Protobuf\Imu.pb.cc" />
-    <ClCompile Include="Protobuf\Lidar.pb.cc" />
-    <ClCompile Include="Protobuf\Matrix.pb.cc" />
-    <ClCompile Include="Protobuf\Messages.pb.cc" />
-    <ClCompile Include="Protobuf\NodeCamMessage.pb.cc" />
-    <ClCompile Include="Protobuf\Pose.pb.cc" />
+    <ClCompile Include="Messages\Image.cpp" />
+    <ClCompile Include="Messages\Logger.cpp" />
+    <ClCompile Include="Messages\Reader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.pb.h" />
-    <ClInclude Include="CameraModel.pb.h" />
     <ClInclude Include="Camera\AutoExposureInterface.h" />
     <ClInclude Include="Camera\CameraDevice.h" />
     <ClInclude Include="Camera\CameraDriverInterface.h" />
     <ClInclude Include="Camera\Drivers\OpenCV\OpenCVDriver.h" />
-    <ClInclude Include="Car.pb.h" />
-    <ClInclude Include="Command.pb.h" />
-    <ClInclude Include="config.h" />
     <ClInclude Include="Devices\DeviceException.h" />
     <ClInclude Include="Devices\DeviceFactory.h" />
     <ClInclude Include="Devices\DeviceRegistry.h" />
@@ -119,18 +104,22 @@
     <ClInclude Include="extra\semaphore.h" />
     <ClInclude Include="extra\sys\time.h" />
     <ClInclude Include="extra\unistd.h" />
-    <ClInclude Include="Gamepad.pb.h" />
-    <ClInclude Include="Header.pb.h" />
-    <ClInclude Include="Image.pb.h" />
-    <ClInclude Include="Imu.pb.h" />
-    <ClInclude Include="Lidar.pb.h" />
-    <ClInclude Include="Matrix.pb.h" />
-    <ClInclude Include="Messages.pb.h" />
-    <ClInclude Include="NodeCamMessage.pb.h" />
-    <ClInclude Include="Pose.pb.h" />
+    <ClInclude Include="Messages\Command.h" />
+    <ClInclude Include="Messages\Image.h" />
+    <ClInclude Include="Messages\ImageArray.h" />
+    <ClInclude Include="Messages\ImagePyramid.h" />
+    <ClInclude Include="Messages\Logger.h" />
+    <ClInclude Include="Messages\Matrix.h" />
+    <ClInclude Include="Messages\Pose.h" />
+    <ClInclude Include="Messages\Reader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ThirdParty\ThirdPartyConfig.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="protobuf.vcxproj">
+      <Project>{611bec70-312c-4ac8-8453-49b23217fdbe}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

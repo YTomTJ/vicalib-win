@@ -1,3 +1,4 @@
+#include <HAL/config.h>
 #define HAVE_STRUCT_TIMESPEC
 #include <time.h>
 #include <random>
