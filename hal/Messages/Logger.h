@@ -14,26 +14,26 @@ namespace hal {
 
 class Logger {
  public:
-  static Logger& GetInstance();
+  HAL_EXPORT static Logger& GetInstance();
 
-  Logger();
-  ~Logger();
+  HAL_EXPORT Logger();
+  HAL_EXPORT ~Logger();
 
   /** Create a new log in the given directory of the format sPrefix_<count>.
    *
    * <count> is increased by one for every new log file.
    */
-  std::string LogToFile(const std::string &sLogDir, const std::string &sPrefix);
+  HAL_EXPORT std::string LogToFile(const std::string &sLogDir, const std::string &sPrefix);
 
   /** Write a log to this specific file, overwriting any previous file. */
-  void LogToFile(const std::string &fileName);
-  void StopLogging();
-  bool IsLogging();
-  void SetMaxBufferSize( unsigned int nBufferSize );
-  size_t buffer_size() const;
-  size_t messages_written() const;
+  HAL_EXPORT void LogToFile(const std::string &fileName);
+  HAL_EXPORT void StopLogging();
+  HAL_EXPORT bool IsLogging();
+  HAL_EXPORT void SetMaxBufferSize( unsigned int nBufferSize );
+  HAL_EXPORT size_t buffer_size() const;
+  HAL_EXPORT size_t messages_written() const;
 
-  bool LogMessage(const hal::Msg& message);
+  HAL_EXPORT bool LogMessage(const hal::Msg &message);
 
  private:
   void ThreadFunc();

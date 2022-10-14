@@ -17,30 +17,30 @@ class DeviceRegistry
 {
 public:
     /// global device registery singleton 
-    static DeviceRegistry<BaseDevice>& Instance();
+    HAL_EXPORT static DeviceRegistry<BaseDevice> &Instance();
 
-    DeviceRegistry();
-    ~DeviceRegistry();
+    HAL_EXPORT DeviceRegistry();
+    HAL_EXPORT ~DeviceRegistry();
 
     /// Register factory pointer accessible by device_name
-    void RegisterFactory(
+    HAL_EXPORT void RegisterFactory(
             const std::string& device_name,
             DeviceFactory<BaseDevice>* factory
             );
 
     // Register device 'name' as alias for 'alias'
-    void RegisterAlias(
+    HAL_EXPORT void RegisterAlias(
             const std::string& name,
             const std::string& alias
             );
 
     // Get factory associated with uri
-    std::shared_ptr<BaseDevice> Create(const Uri& uri);
+    HAL_EXPORT std::shared_ptr<BaseDevice> Create(const Uri &uri);
 
-    void Destroy(BaseDevice* dev);
+    HAL_EXPORT void Destroy(BaseDevice *dev);
 
     // print the map<string,Dec> table 
-    void PrintRegisteredDevices();
+    HAL_EXPORT void PrintRegisteredDevices();
 
 protected:
 

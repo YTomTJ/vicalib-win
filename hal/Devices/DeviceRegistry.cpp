@@ -11,18 +11,18 @@ namespace hal
 {
 
 template<typename BaseDevice>
-DeviceRegistry<BaseDevice>::DeviceRegistry() {
+HAL_EXPORT DeviceRegistry<BaseDevice>::DeviceRegistry() {
   RegisterAlias( "bumblebee", "convert:[fmt=MONO8]//debayer://deinterlace://dc1394:[mode=FORMAT7_3]//" );
   RegisterAlias( "twizzler",  "deinterlace://v4l://" );
 }
 
 template<typename BaseDevice>
-DeviceRegistry<BaseDevice>::~DeviceRegistry()
+HAL_EXPORT DeviceRegistry<BaseDevice>::~DeviceRegistry()
 {
 }
 
 template<typename BaseDevice>
-DeviceRegistry<BaseDevice>& DeviceRegistry<BaseDevice>::Instance()
+HAL_EXPORT DeviceRegistry<BaseDevice> &DeviceRegistry<BaseDevice>::Instance()
 {
   static DeviceRegistry<BaseDevice> s_instance;
   return s_instance;
@@ -30,7 +30,7 @@ DeviceRegistry<BaseDevice>& DeviceRegistry<BaseDevice>::Instance()
 
 // Register factory pointer.
 template<typename BaseDevice>
-void DeviceRegistry<BaseDevice>::RegisterFactory(
+HAL_EXPORT void DeviceRegistry<BaseDevice>::RegisterFactory(
     const std::string& device_name,
     DeviceFactory<BaseDevice>* factory
     )
@@ -39,7 +39,7 @@ void DeviceRegistry<BaseDevice>::RegisterFactory(
 }
 
 template<typename BaseDevice>
-void DeviceRegistry<BaseDevice>::RegisterAlias(
+HAL_EXPORT void DeviceRegistry<BaseDevice>::RegisterAlias(
     const std::string& name,
     const std::string& alias
     )
@@ -48,7 +48,7 @@ void DeviceRegistry<BaseDevice>::RegisterAlias(
 }
 
 template<typename BaseDevice>
-std::shared_ptr<BaseDevice> DeviceRegistry<BaseDevice>::Create(
+HAL_EXPORT std::shared_ptr<BaseDevice> DeviceRegistry<BaseDevice>::Create(
     const Uri& uri )
 {
   // Check for aliases
@@ -73,7 +73,7 @@ std::shared_ptr<BaseDevice> DeviceRegistry<BaseDevice>::Create(
 }
 
 template<typename BaseDevice>
-void DeviceRegistry<BaseDevice>::PrintRegisteredDevices()
+HAL_EXPORT void DeviceRegistry<BaseDevice>::PrintRegisteredDevices()
 {
 /*
   std::cout << "Registered device factories:\n";
@@ -83,11 +83,11 @@ void DeviceRegistry<BaseDevice>::PrintRegisteredDevices()
 */
 }
 
-
 template<typename BaseDevice>
-void DeviceRegistry<BaseDevice>::Destroy(BaseDevice* /*dev*/)
+HAL_EXPORT void DeviceRegistry<BaseDevice>::Destroy(BaseDevice * /*dev*/)
 {
 }
+
 // Explicitly instantiate desired registries.
 template class DeviceRegistry<hal::CameraDriverInterface>;
 template class DeviceRegistry<hal::IMUDriverInterface>;

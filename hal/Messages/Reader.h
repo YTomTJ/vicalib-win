@@ -23,16 +23,16 @@ enum MessageType {
 
 class Reader {
  public:
-  static Reader& Instance(const std::string& filename, MessageType eType);
+  HAL_EXPORT static Reader& Instance(const std::string& filename, MessageType eType);
 
-  Reader(const std::string& filename);
-  ~Reader();
+  HAL_EXPORT Reader(const std::string &filename);
+  HAL_EXPORT ~Reader();
 
   /// Reads message regardless of type. This allows the user to handle
   /// the message list directly.
   ///
   /// This will block if no messages are in the queue.
-  std::unique_ptr<hal::Msg> ReadMessage();
+  HAL_EXPORT std::unique_ptr<hal::Msg> ReadMessage();
 
   /// Reads the next camera message from the message queue. If the
   /// next message is NOT a camera message, or the message queue is
@@ -44,7 +44,7 @@ class Reader {
   ///
   /// @param id ID of camera to return. Negative number indicates that
   ///           any camera messsage should be returned.
-  std::unique_ptr<hal::CameraMsg> ReadCameraMsg(int id = -1);
+  HAL_EXPORT std::unique_ptr<hal::CameraMsg> ReadCameraMsg(int id = -1);
 
   /// Reads the next IMU message from the message queue. If the next
   /// message is NOT an IMU message, or the message queue is empty,
@@ -53,7 +53,7 @@ class Reader {
   ///
   /// The "ReadIMU" static variable must be set to true if the reader
   /// is to queue IMU messages.
-  std::unique_ptr<hal::ImuMsg> ReadImuMsg();
+  HAL_EXPORT std::unique_ptr<hal::ImuMsg> ReadImuMsg();
 
   /// Reads the next LIDAR message from the message queue. If the next
   /// message is NOT a LIDAR message, or the message queue is empty,
@@ -62,7 +62,7 @@ class Reader {
   ///
   /// The "ReadLidar" static variable must be set to true if the
   /// reader is to queue LIDAR messages.
-  std::unique_ptr<hal::LidarMsg> ReadLidarMsg();
+  HAL_EXPORT std::unique_ptr<hal::LidarMsg> ReadLidarMsg();
 
   /// Reads the next POSE message from the message queue. If the next
   /// message is NOT a POSE message, or the message queue is empty,
@@ -71,14 +71,14 @@ class Reader {
   ///
   /// The "ReadPose" static variable must be set to true if the reader
   /// is to queue POSE messages.
-  std::unique_ptr<hal::PoseMsg> ReadPoseMsg();
+  HAL_EXPORT std::unique_ptr<hal::PoseMsg> ReadPoseMsg();
 
   /// Stops the buffering thread. Should be called by driver
   /// implementations, usually in their destructors.
-  void StopBuffering();
+  HAL_EXPORT void StopBuffering();
 
   /// Reset reader to use specified initial image
-  bool SetInitialImage(size_t nImgID);
+  HAL_EXPORT bool SetInitialImage(size_t nImgID);
 
   /// Getters and setters for max buffer size
   void SetMaxBufferSize(const int nNumMessages) {
@@ -94,11 +94,11 @@ class Reader {
 
   bool IsRunning() const { return m_bRunning; }
 
-  void Enable(MessageType type);
-  void Disable(MessageType type);
-  void EnableAll();
-  void DisableAll();
-  bool IsEnabled(MessageType type) const;
+  HAL_EXPORT void Enable(MessageType type);
+  HAL_EXPORT void Disable(MessageType type);
+  HAL_EXPORT void EnableAll();
+  HAL_EXPORT void DisableAll();
+  HAL_EXPORT bool IsEnabled(MessageType type) const;
 
  private:
   /// Buffer from file.

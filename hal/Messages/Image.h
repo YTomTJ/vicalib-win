@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <HAL/config.h>
 #include <HAL/Messages.pb.h>
 
 #pragma GCC system_header
@@ -14,9 +15,9 @@ class ImageArray;
  * given message.
  *
  * */
-cv::Mat WriteCvMat(const hal::ImageMsg& pbImage);
-void ReadCvMat(const cv::Mat& cvImage, hal::ImageMsg* pbImage);
-void ReadFile(const std::string& sFileName, hal::ImageMsg* pbImage);
+HAL_EXPORT cv::Mat WriteCvMat(const hal::ImageMsg &pbImage);
+HAL_EXPORT void ReadCvMat(const cv::Mat &cvImage, hal::ImageMsg *pbImage);
+HAL_EXPORT void ReadFile(const std::string &sFileName, hal::ImageMsg *pbImage);
 
 /**
  * Basic image class used as a wrapper around an ImageMsg.
@@ -42,34 +43,34 @@ class Image {
   /// for ensuring the data outlasts this Image and its cv::Mat
   ///
   /// NO-COPY
-  explicit Image(const ImageMsg& img);
+  HAL_EXPORT explicit Image(const ImageMsg& img);
 
   /// Construct with a pointer to the parent ImageArray.
   ///
   /// NO-COPY
-  Image(const ImageMsg& img,
+  HAL_EXPORT Image(const ImageMsg &img,
         const std::shared_ptr<const ImageArray>& source_array);
 
   /// Performs a DEEP copy of the Image and takes ownership of the image
-  Image& operator=(const Image& other);
+  HAL_EXPORT Image &operator=(const Image &other);
 
   /// Performs a DEEP copy of the Image and takes ownership of the image
-  Image(const Image& other);
+  HAL_EXPORT Image(const Image &other);
 
   /// Move constructor performs a SHALLOW copy
-  Image(Image&&) = default;
+  HAL_EXPORT Image(Image &&) = default;
 
-  virtual ~Image();
-  unsigned int Width() const;
-  unsigned int Height() const;
-  long int SerialNumber() const;
-  int Type() const;
-  int Format() const;
-  double Timestamp() const;
-  const hal::ImageInfoMsg& GetInfo() const;
-  bool HasInfo() const;
-  const unsigned char* data() const;
-  const unsigned char* RowPtr(unsigned int row = 0) const;
+  HAL_EXPORT virtual ~Image();
+  HAL_EXPORT unsigned int Width() const;
+  HAL_EXPORT unsigned int Height() const;
+  HAL_EXPORT long int SerialNumber() const;
+  HAL_EXPORT int Type() const;
+  HAL_EXPORT int Format() const;
+  HAL_EXPORT double Timestamp() const;
+  HAL_EXPORT const hal::ImageInfoMsg& GetInfo() const;
+  HAL_EXPORT bool HasInfo() const;
+  HAL_EXPORT const unsigned char* data() const;
+  HAL_EXPORT const unsigned char* RowPtr(unsigned int row = 0) const;
 
   operator cv::Mat() {
     return mat_;
